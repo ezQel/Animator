@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Animator</string>
+    <string name="alpha">FADE OUT</string>
+    <string name="rotate">ROTATE</string>
+    <string name="scale">SCALE</string>
+    <string name="translate">TRANSLATE</string>
+    <string name="set_from_xml">SET FROM XML</string>
+    <string name="imgage_decription">A black leaf illustration</string>
+    <string name="fromCode">SET FROM CODE</string>
+</resources>
