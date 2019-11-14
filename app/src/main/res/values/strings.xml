@@ -7,4 +7,5 @@
     <string name="set_from_xml">SET FROM XML</string>
     <string name="imgage_decription">A black leaf illustration</string>
     <string name="fromCode">SET FROM CODE</string>
+    <string name="VPA">VIEW PROPERTY ANIMATOR</string>
 </resources>

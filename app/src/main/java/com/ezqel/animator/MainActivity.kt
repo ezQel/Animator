@@ -4,12 +4,13 @@ import android.animation.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewPropertyAnimator
 import android.view.animation.*
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
-
+    private var vpa:ViewPropertyAnimator? = null
     private var rootSet:AnimatorSet? = null
     private var childSet:AnimatorSet? = null
     private var scaleX:ObjectAnimator? = null
@@ -39,10 +40,13 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         translate_button.setOnClickListener{
             translateText()
         }
+        vp_a.setOnClickListener{
+            animateWithVPA()
+        }
     }
 
     private fun translateText(){
-        translateAnimator = ObjectAnimator.ofFloat(hello_world, "translationX", 0.0f,200.0f)
+        translateAnimator = ObjectAnimator.ofFloat(target_image, "translationX", 0.0f,200.0f)
         translateAnimator?.apply {
             duration = 2000
             repeatCount =3
@@ -52,7 +56,7 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         }
     }
     private fun scaleText() {
-        scaleAnimator = ObjectAnimator.ofFloat(hello_world, "scaleX", 1.0f,2.0f)
+        scaleAnimator = ObjectAnimator.ofFloat(target_image, "scaleX", 1.0f,2.0f)
         scaleAnimator?.apply {
             duration = 2000
             repeatCount = 3
@@ -63,7 +67,7 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
     }
 
     fun animateAlpha(){
-        alphaAnimation = ObjectAnimator.ofFloat(hello_world, "Alpha", 1.0f, 0.0f)
+        alphaAnimation = ObjectAnimator.ofFloat(target_image, "Alpha", 1.0f, 0.0f)
         alphaAnimation?.apply {
             duration = 2000
             repeatMode = ObjectAnimator.REVERSE
@@ -73,7 +77,7 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         }
     }
     fun rotatetext(){
-        rotateAnimation= ObjectAnimator.ofFloat(hello_world, "rotation", 0.0f, 360.0f)
+        rotateAnimation= ObjectAnimator.ofFloat(target_image, "rotation", 0.0f, 360.0f)
         rotateAnimation?.apply {
             repeatCount = 3
             repeatMode = ObjectAnimator.REVERSE
@@ -87,7 +91,7 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
     fun setFromXml(){
         xmlAnimatorSet = AnimatorInflater.loadAnimator(this, R.animator.set)
         xmlAnimatorSet?.apply {
-            setTarget(hello_world)
+            setTarget(target_image)
             start()
         }
     }
@@ -96,13 +100,13 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         rootSet = AnimatorSet() //root set for all animations below
         childSet = AnimatorSet() // child set with scale animations
 
-        scaleX = ObjectAnimator.ofFloat(hello_world, "scaleX",1.0f, 2.0f)
+        scaleX = ObjectAnimator.ofFloat(target_image, "scaleX",1.0f, 2.0f)
         scaleX?.duration = 500
 //        scaleX?.interpolator = DecelerateInterpolator()
 //        scaleX?.interpolator = AccelerateDecelerateInterpolator()
 //        scaleX?.interpolator = BounceInterpolator()
 
-        scaleY = ObjectAnimator.ofFloat(hello_world, "scaleY",1.0f, 2.0f)
+        scaleY = ObjectAnimator.ofFloat(target_image, "scaleY",1.0f, 2.0f)
         scaleY?.duration =500
 //        scaleX?.interpolator = DecelerateInterpolator()
 //        scaleY?.interpolator = AccelerateDecelerateInterpolator()
@@ -111,7 +115,7 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
 //        childSet?.interpolator = AccelerateInterpolator()
 //        childSet?.interpolator = BounceInterpolator()
         childSet?.interpolator = CycleInterpolator(5f)
-        rotateX = ObjectAnimator.ofFloat(hello_world, "rotationX",0.0f, 360.0f)
+        rotateX = ObjectAnimator.ofFloat(target_image, "rotationX",0.0f, 360.0f)
         rotateX?.duration=500
 
 //        rootSet?.playSequentially(rotateX, childSet)
@@ -120,6 +124,16 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         rootSet?.play(childSet)?.after(rotateX)
         childSet?.play(scaleX)?.with(scaleY)
         rootSet?.start()
+    }
+
+    private fun animateWithVPA(){
+        vpa = target_image.animate()
+        vpa?.duration = 500
+        vpa?.rotationX(360f)
+        vpa?.scaleX(2f)
+        vpa?.scaleY(2f)
+        vpa?.interpolator = OvershootInterpolator()
+        vpa?.start()
     }
 
     override fun onAnimationStart(animator: Animator?){
