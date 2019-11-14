@@ -4,6 +4,7 @@ import android.animation.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.*
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -96,11 +97,20 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         childSet = AnimatorSet() // child set with scale animations
 
         scaleX = ObjectAnimator.ofFloat(hello_world, "scaleX",1.0f, 2.0f)
-        scaleX?.duration =500
+        scaleX?.duration = 500
+//        scaleX?.interpolator = DecelerateInterpolator()
+//        scaleX?.interpolator = AccelerateDecelerateInterpolator()
+//        scaleX?.interpolator = BounceInterpolator()
 
         scaleY = ObjectAnimator.ofFloat(hello_world, "scaleY",1.0f, 2.0f)
         scaleY?.duration =500
+//        scaleX?.interpolator = DecelerateInterpolator()
+//        scaleY?.interpolator = AccelerateDecelerateInterpolator()
+//        scaleY?.interpolator = BounceInterpolator()
 
+//        childSet?.interpolator = AccelerateInterpolator()
+//        childSet?.interpolator = BounceInterpolator()
+        childSet?.interpolator = CycleInterpolator(5f)
         rotateX = ObjectAnimator.ofFloat(hello_world, "rotationX",0.0f, 360.0f)
         rotateX?.duration=500
 
