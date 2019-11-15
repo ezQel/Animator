@@ -10,6 +10,10 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
+    private var pvhAnimator:ObjectAnimator? = null
+    private var scalexPropertyValuesHolder:PropertyValuesHolder? = null
+    private var scaleYPropertyValuesHolder:PropertyValuesHolder? = null
+    private var rotateXPropertyValuesHolder:PropertyValuesHolder? = null
     private var vpa:ViewPropertyAnimator? = null
     private var rootSet:AnimatorSet? = null
     private var childSet:AnimatorSet? = null
@@ -32,7 +36,7 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         fadeout_button.setOnClickListener {
             animateAlpha()}
         rotate_button.setOnClickListener{
-            rotatetext()
+            rotateText()
         }
         scale_button.setOnClickListener{
             scaleText()
@@ -42,6 +46,9 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         }
         vp_a.setOnClickListener{
             animateWithVPA()
+        }
+        pv_holder.setOnClickListener{
+            animateWithPVH()
         }
     }
 
@@ -66,7 +73,7 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         }
     }
 
-    fun animateAlpha(){
+    private fun animateAlpha(){
         alphaAnimation = ObjectAnimator.ofFloat(target_image, "Alpha", 1.0f, 0.0f)
         alphaAnimation?.apply {
             duration = 2000
@@ -76,7 +83,7 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
             start()
         }
     }
-    fun rotatetext(){
+    private fun rotateText(){
         rotateAnimation= ObjectAnimator.ofFloat(target_image, "rotation", 0.0f, 360.0f)
         rotateAnimation?.apply {
             repeatCount = 3
@@ -84,11 +91,10 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
             duration = 2000
             addListener(this@MainActivity)
             start()
-
         }
     }
 
-    fun setFromXml(){
+    private fun setFromXml(){
         xmlAnimatorSet = AnimatorInflater.loadAnimator(this, R.animator.set)
         xmlAnimatorSet?.apply {
             setTarget(target_image)
@@ -136,6 +142,19 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         vpa?.start()
     }
 
+    private fun animateWithPVH(){
+        scalexPropertyValuesHolder = PropertyValuesHolder.ofFloat( "scaleX", 2.0f)
+        scaleYPropertyValuesHolder = PropertyValuesHolder.ofFloat( "scaleY", 2.0f)
+        rotateXPropertyValuesHolder = PropertyValuesHolder.ofFloat("rotationX", 360f)
+        pvhAnimator = ObjectAnimator.ofPropertyValuesHolder(target_image, scalexPropertyValuesHolder,scaleYPropertyValuesHolder,rotateXPropertyValuesHolder)
+        pvhAnimator?.apply {
+            duration = 500
+            interpolator = BounceInterpolator()
+            start()
+            addListener(this@MainActivity)
+        }
+    }
+
     override fun onAnimationStart(animator: Animator?){
         if (animator == scaleAnimator)
             Toast.makeText(this,"Scale Animation Started", Toast.LENGTH_SHORT).show()
@@ -145,7 +164,8 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
             Toast.makeText(this,"Fade Animation Started", Toast.LENGTH_SHORT).show()
         if (animator==translateAnimator)
             Toast.makeText(this,"Translation Animation Started", Toast.LENGTH_SHORT).show()
-
+        if (animator==pvhAnimator)
+            Toast.makeText(this,"PVHA Animation Started", Toast.LENGTH_SHORT).show()
     }
 
     override fun onAnimationRepeat(animator: Animator?) {
@@ -181,6 +201,8 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
             Toast.makeText(this,"Fade Animation Ended", Toast.LENGTH_SHORT).show()
         if (animator==translateAnimator)
             Toast.makeText(this,"Translation Animation Ended", Toast.LENGTH_SHORT).show()
+        if (animator==pvhAnimator)
+            Toast.makeText(this,"PVHA Animation Ended", Toast.LENGTH_SHORT).show()
 
     }
 }

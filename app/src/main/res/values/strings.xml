@@ -8,4 +8,5 @@
     <string name="imgage_decription">A black leaf illustration</string>
     <string name="fromCode">SET FROM CODE</string>
     <string name="VPA">VIEW PROPERTY ANIMATOR</string>
+    <string name="pvh">PROPERTY VALUES HOLDER</string>
 </resources>
