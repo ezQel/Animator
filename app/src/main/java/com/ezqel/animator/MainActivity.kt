@@ -1,6 +1,7 @@
 package com.ezqel.animator
 
 import android.animation.*
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -49,6 +50,9 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         }
         pv_holder.setOnClickListener{
             animateWithPVH()
+        }
+        open_other_activity.setOnClickListener{
+            startActivity(Intent(this, DrawablesActivity::class.java))
         }
     }
 

@@ -9,4 +9,6 @@
     <string name="fromCode">SET FROM CODE</string>
     <string name="VPA">VIEW PROPERTY ANIMATOR</string>
     <string name="pvh">PROPERTY VALUES HOLDER</string>
+    <string name="go_to_animate_drawables">Go to Animate Drawables</string>
+    <string name="start_animation">START ANIMATION</string>
 </resources>
