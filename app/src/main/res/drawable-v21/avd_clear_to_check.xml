@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_clear">
+
+    <target
+        android:animation="@animator/animated_vector_rotation"
+        android:name="groupTickCross"/>
+    <target
+        android:name="cross"
+        android:animation="@animator/animated_vector_morph"/>
+</animated-vector>

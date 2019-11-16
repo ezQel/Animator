@@ -54,6 +54,9 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         open_other_activity.setOnClickListener{
             startActivity(Intent(this, DrawablesActivity::class.java))
         }
+        goto_anim_vector.setOnClickListener{
+            startActivity(Intent(this, VectorActivity::class.java))
+        }
     }
 
     private fun translateText(){

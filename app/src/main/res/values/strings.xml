@@ -11,4 +11,6 @@
     <string name="pvh">PROPERTY VALUES HOLDER</string>
     <string name="go_to_animate_drawables">Go to Animate Drawables</string>
     <string name="start_animation">START ANIMATION</string>
+    <string name="animated_vector_drawable">Animated VEctor Drawable</string>
+    <string name="tick_to_check">A tick icom</string>
 </resources>
