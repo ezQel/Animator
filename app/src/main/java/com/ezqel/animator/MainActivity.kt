@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
     private var pvhAnimator:ObjectAnimator? = null
-    private var scalexPropertyValuesHolder:PropertyValuesHolder? = null
+    private var scaleXPropertyValuesHolder:PropertyValuesHolder? = null
     private var scaleYPropertyValuesHolder:PropertyValuesHolder? = null
     private var rotateXPropertyValuesHolder:PropertyValuesHolder? = null
     private var vpa:ViewPropertyAnimator? = null
@@ -56,6 +56,9 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         }
         goto_anim_vector.setOnClickListener{
             startActivity(Intent(this, VectorActivity::class.java))
+        }
+        goto_transitions.setOnClickListener{
+            startActivity(Intent(this, LayoutTransitionsActivity::class.java))
         }
     }
 
@@ -150,10 +153,10 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
     }
 
     private fun animateWithPVH(){
-        scalexPropertyValuesHolder = PropertyValuesHolder.ofFloat( "scaleX", 2.0f)
+        scaleXPropertyValuesHolder = PropertyValuesHolder.ofFloat( "scaleX", 2.0f)
         scaleYPropertyValuesHolder = PropertyValuesHolder.ofFloat( "scaleY", 2.0f)
         rotateXPropertyValuesHolder = PropertyValuesHolder.ofFloat("rotationX", 360f)
-        pvhAnimator = ObjectAnimator.ofPropertyValuesHolder(target_image, scalexPropertyValuesHolder,scaleYPropertyValuesHolder,rotateXPropertyValuesHolder)
+        pvhAnimator = ObjectAnimator.ofPropertyValuesHolder(target_image, scaleXPropertyValuesHolder,scaleYPropertyValuesHolder,rotateXPropertyValuesHolder)
         pvhAnimator?.apply {
             duration = 500
             interpolator = BounceInterpolator()
