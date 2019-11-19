@@ -58,7 +58,12 @@ class LayoutTransitionsActivity : AppCompatActivity() {
         val fadeTransition = Fade(Fade.IN)
         fadeTransition.duration =2000
 
+        val fadeoutTransition = Fade(Fade.OUT)
+        fadeTransition.duration =2000
+
+
         TransitionManager.beginDelayedTransition(sceneLayout,fadeTransition)
+        TransitionManager.beginDelayedTransition(sceneLayout, fadeoutTransition)
         if (hello_world_desc.isVisible)
             hello_world_desc.visibility = View.INVISIBLE
         else
