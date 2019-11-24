@@ -60,6 +60,9 @@ class MainActivity : AppCompatActivity(), Animator.AnimatorListener {
         goto_transitions.setOnClickListener{
             startActivity(Intent(this, LayoutTransitionsActivity::class.java))
         }
+        keyframe_button.setOnClickListener{
+            startActivity(Intent(this, KeyFrameActivity::class.java))
+        }
     }
 
     private fun translateText(){

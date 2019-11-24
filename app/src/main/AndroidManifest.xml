@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".LayoutTransitionsActivity"/>
+        <activity android:name=".KeyFrameActivity"></activity>
+        <activity android:name=".LayoutTransitionsActivity" />
         <activity android:name=".VectorActivity" />
         <activity android:name=".DrawablesActivity" />
         <activity android:name=".MainActivity">

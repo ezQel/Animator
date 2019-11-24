@@ -19,4 +19,9 @@
         It typically involves writing code to print the words hello world on the screen/terminal.</string>
     <string name="disclaimer">Disclaimer</string>
     <string name="disclaimer_text">This description is that of the author and should not be viewed to be of any kind of expert. The author denies responsibility for any harm done</string>
+    <string name="keyframe_animation">Keyframe Animation</string>
+    <string name="roger">Roger from American Dad</string>
+    <string name="roger_name">Roger</string>
+    <string name="cartoon_character">cartoon character</string>
+    <string name="roger_desc">Roger is a cartoon character in the American dad cartoon comedy series</string>
 </resources>

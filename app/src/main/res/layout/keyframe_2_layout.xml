@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/constraint_layout_2">
+
+    <ImageView
+        android:id="@+id/roger_image"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:contentDescription="@string/roger_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/roger" />
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/roger_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/black"
+        android:textColor="@android:color/white"/>
+    <TextView
+        android:id="@+id/name_extra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_name"
+        android:background="@android:color/black"
+        android:text="@string/cartoon_character"
+        app:layout_constraintStart_toStartOf="@id/text_name"
+        android:textColor="@android:color/white"
+        />
+    <TextView
+    android:id="@+id/text_desc"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/roger_image"
+    app:layout_constraintStart_toStartOf="parent"
+    android:background="@android:color/black"
+    android:text="@string/roger_desc"
+    android:textColor="@android:color/white"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>
